@@ -1,5 +1,5 @@
 import cartReducer from './cartReducer';
-import { addToCart, deleteFromCart } from '../actions';
+import { addToCart, deleteFromCart, emptyCart } from '../actions';
 
 const item = {
   name: 'tv',
@@ -26,4 +26,12 @@ describe("cartReducer tests", () => {
   test("DELETE_FROM_CART just returns unaltered state if item doesn't exist", () => {
     expect(cartReducer(undefined, deleteFromCart('tv'))).toEqual([]);
   });
+
+  test("DELETE_FROM_CART deletes entire item when ignoring quantity", () => {
+    expect(cartReducer([{ ...item, qty: 10 }], deleteFromCart('tv', true))).toEqual([]);
+  });
+
+  test("EMPTY_CART works", () => {
+    expect(cartReducer([{ ...item, qty: 1 }], emptyCart())).toEqual([]);
+  })
 });

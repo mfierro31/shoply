@@ -1,4 +1,4 @@
-import { addToCart, deleteFromCart } from './actions';
+import { addToCart, deleteFromCart, emptyCart } from './actions';
 
 const item = {
   name: 'tv',
@@ -13,6 +13,16 @@ describe("tests for addToCart", () => {
 
 describe("tests for deleteFromCart", () => {
   test("returns correct object given a name", () => {
-    expect(deleteFromCart('tv')).toEqual({ type: "DELETE_FROM_CART", name: 'tv' });
+    expect(deleteFromCart('tv')).toEqual({ type: "DELETE_FROM_CART", name: 'tv', ignoreQty: false });
+  });
+
+  test("returns correct object given a name and ignoreQty boolean", () => {
+    expect(deleteFromCart('tv', true)).toEqual({ type: "DELETE_FROM_CART", name: 'tv', ignoreQty: true });
+  });
+});
+
+describe("tests for emptyCart", () => {
+  test("returns correct object", () => {
+    expect(emptyCart()).toEqual({ type: "EMPTY_CART" });
   });
 });
