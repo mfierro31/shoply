@@ -39,6 +39,9 @@ function cart(state = INITIAL_STATE, action) {
         return cartCopy;
       }
       break;
+    case "EMPTY_CART":
+      window.localStorage.setItem('cart', JSON.stringify([]));
+      return [];
     default:
       return state;
   }

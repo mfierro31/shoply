@@ -6,6 +6,8 @@ import './Home.css'
 const Home = () => {
   const items = useSelector(store => store.items, shallowEqual);
 
+  window.onbeforeunload = () => window.scrollTo(0, 0);
+
   return (
     <div>
       <h1 className="Home-header">Products</h1>

@@ -18,7 +18,7 @@ const CartItem = ({ name, price, description, img, qty }) => {
       remove();
     }
   }
-
+    
   return (
     <div className="mb-5">
       <h1 className="m">{name.toUpperCase()}</h1>
@@ -26,7 +26,7 @@ const CartItem = ({ name, price, description, img, qty }) => {
         <img src={img} alt={name} />
       </div>
       <p className="mt-3">${price}</p>
-      <p>{description}</p>
+      <p>{description}</p>    
       <label htmlFor="qty" className="form-label">Quantity:</label>
       <div className="CartItem-input">
         <input type="number" id="qty" value={qty} onChange={handleChange} min="1" className="form-control mb-3" />
